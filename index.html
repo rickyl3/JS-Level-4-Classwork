@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href="style.css">
+</head>
+<!-- <body onload="initialize();">
+    part 1
+    <h2>Daily Log</h2>
+    <form id="logform">
+        <textarea name="loginput"></textarea>
+    </form>
+
+    <button onclick="addMessage(logFormObject.loginput.value);">
+        Add To Log
+    </button>
+
+    <hr />
+
+    <div id="logoutput">Log --</div>
+
+    <script>
+        const INVALID_CHARS = "<>@#*";
+        function initialize() {
+            logOutputBox = document.getElementById("logoutput");
+            logFormObject = document.getELementById("logform");
+            log = "Log -- ";
+        }
+        function validate(msg) {
+            for (var i = 0; i < INVALID_CHARS.length; i++) {
+                var charIdx = msg.indexOf(INVALID_CHARS.charAt(i));
+                while (charIdx >= 0) {
+                    msg = msg.substring(0, charIdx) + msg.substring(charIdx + 1);
+                    charIdx = msg.indexof(INVALID_CHARS.chartAt(i));
+                }
+            }
+            return msg;
+        }
+        function addMessage(msg) {
+            log += "<br />" + validate(msg);
+            display();
+        }
+        function display() {
+            logOutputBox.innerHTML = log;
+        }
+    </script>
+</body> -->
+
+<!-- <body onload="initialize();">
+    Part 2
+    <div id="divout"></div>
+    <script>
+        function initialize() {
+            arrayOutput.document.getElementById("divout");
+            randomList = [];
+            var randomLength = getRandomInteger(50, 100);
+            for (var i = 0; i < randomLength; i++) {
+                randomList[randomList.length] = getRandomInteger(-10, 10);
+            }
+            displayList();
+        }
+        function displayList() {
+            arrayOutput.innerHTML = "";
+            for (var i = 0; i < randomList.length; i++) {
+                arrayOutput.innerHTML += i + ": " + randomList[i] + "<br />";
+            }
+        }
+    </script>
+</body> -->
+
+<body onload="initialize();">
+    <h1>Food List</h1>
+    <label>
+        Selection: <input type = "text" id = "foodsel" />
+    </label>
+    <hr />
+
+    <button onclick="addFood();">
+        Add Food
+    </button>
+    <button onclick ="getDupeList();">
+        Find Duplicates
+    </button>
+    <button onclick="getDuperCount();">
+        Count Duplicates
+    </button> <br />
+
+    <div>
+        Duplicate Indices: <span id="dupes"></span>
+    </div>
+    <div>
+        Count of Duplicates: <span id="count"></span>
+    </div>
+    <hr />
+    <div>
+        <div id="outbox"></div>
+    </div>
+
+    <script>
+        function initialize() {
+            outBox = document.getElementById("outbox");
+            foodSelectionBox = document.getElementById("foodsel");
+            duplicatesBox = document.getElementById("dupes");
+            countBox = document.getElementById("count");
+
+            foodList = ["Pizza", "Hamburger", "Sushi", "Guacamole"];
+            dupesList = [];
+            dupesCount = 0;
+            display();
+        }
+        function display() {
+            outBox.innerHTML = "0: " + foodList[0];
+            for (var i = 1; i < foodList.length; i++) {
+                outBox.innerHTML += "<br />" + i + ": " + foodList[i];
+            }
+            duplicatesBox.innerHTML = dupesList;
+            countBox.innerHTML = dupesCount;
+        }
+        function addFood() {
+            foodList.push(foodSelectionBox.value);
+            display();
+        }
+        function countDuplicates(array, itm) {
+            var itmCount = 0;
+            for (var i = 0; i < array.length; i++) {
+                if (itm == array[i]) {
+                    itmCount++;
+                }
+            }
+            return itmCount;
+        }
+        function indexesOf(array, itm) {
+            var idxList = [];
+            for(var i = 0; i < array.length; i++) {
+                if (itm == array[i]) {
+                    idxList.push(i);
+                }
+            }
+            return idxList;
+        }
+        function getDupeList() {
+            dupesList=indexesOf(foodList, foodSelectionBox.value);
+            display();
+        }
+        function getDupeCount() {
+            dupesCount = countDuplicates(foodList, foodSelectionBox.value);
+            display();
+        }
+    </script>
+</body>
+</html>
